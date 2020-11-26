@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.com/hbrs-ai/assignment-03.svg?branch=master)](https://travis-ci.com/hbrs-ai/assignment-03)
-# <YOUR_FIRST_NAME><YOUR_LAST_NAME>
+# Kabilan Tamilmani
 
 # Assignment 3
 In this Assignment you will be implementing Breadth First Search, Depth First Search and Iterative Deepening Depth First Search.
