@@ -95,12 +95,7 @@ def breadth_first_search(maze_map, start_pos, goal_pos):
         visited_nodes.append(current_node)
 
         #visualizing search map
-        for entry in queue:
-            if entry[1] == current_node:
-                #parent node of current node
-                prev_node = entry[0] 
-        if current_node != start:
-            assign_character_for_nodes(search_map,current_node,prev_node)
+        assign_character_for_nodes(search_map, current_node, queue)
         
 
     #if no path is available from start to goal    
