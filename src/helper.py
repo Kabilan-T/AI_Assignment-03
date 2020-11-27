@@ -125,7 +125,7 @@ def assign_character_for_nodes(search_map, current_node, queue):
         for line in search_map:
             print (line)
 
-    time.sleep(0.03)
+        time.sleep(0.03)
 
     #returing resultant map
     return search_map
