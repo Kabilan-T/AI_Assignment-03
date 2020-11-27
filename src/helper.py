@@ -50,45 +50,85 @@ def maze_map_to_tree(maze_map):
     #returing resultant tree
     return tree
 
-def assign_character_for_nodes(maze_map, current_node, prev_node):
+def assign_character_for_nodes(search_map, current_node, queue):
     """Function to assign character for the visited nodes. Please assign
     meaningful characters based on the direction of tree traversal.
 
     Parameters
     ----------
-    maze_map : Sequence[str]
+    search_map : Sequence[str]
         A list of lines from search map
     current_node : [int,int]
         current node position for which character has to be assigned
-    prev_node : [int,int]
-        parent node of the current node to identify direction
+    queue :  Sequence[int]
+        queue which contains (parent,child) nodes
 
     Returns
     -------
     Sequence[str]
         map with character assigned for current node
     """
-    #current x,y
-    cx,cy = current_node     
-    #previous x,y
-    px,py = prev_node   
+    x0,y0 = current_node   #current
 
-    #short horizontal
-    if   (px - cx ==  0) :      
-        character = "\u2574"  
-    #short vertical  
-    elif (py - cy ==  0) :
-        character = "\u2575"
+    for entry in queue:
+        if entry[1] == current_node:
+            #parent node of current node
+            prev_node1 = entry[0] 
     
-    #write character in the map
-    assign_character(maze_map,(cx,cy),character)
+    if prev_node1 != "":
+        x1,y1 = prev_node1  #previous
 
-    if False :
-        for line in maze_map:
+        for entry in queue:
+            if entry[1] == prev_node1:
+                #parent node of prev_node1
+                prev_node2 = entry[0]
+
+        if prev_node2 != "":
+            x2,y2 = prev_node2   #previous to previous
+            
+            #right to left or left to right
+            if   (x2 - x1 ==  0) and (x1 - x0 ==  0):
+                character = "\u2574"
+
+            #up to down or down to up
+            elif (y2 - y1 ==  0) and (y1 - y0 ==  0):
+                character = "\u2575"
+
+            #left to down or down to left
+            elif ((y2 - y1 == -1) and (x1 - x0 == -1)) or ((x2 - x1 ==  1) and (y1 - y0 ==  1)):
+                character = "\u2510"
+
+            #right to up or up to right
+            elif ((x2 - x1 == -1) and (y1 - y0 == -1)) or ((y2 - y1 ==  1) and (x1 - x0 ==  1)):
+                character = "\u2514"
+        
+            #right to down or down to right 
+            elif ((y2 - y1 ==  1) and (x1 - x0 == -1)) or ((x2 - x1 ==  1) and (y1 - y0 == -1)):
+                character = "\u250C"
+
+            #left to up or up to left
+            elif ((x2 - x1 == -1) and (y1 - y0 ==  1)) or ((y2 - y1 == -1) and (x1 - x0 ==  1)):
+                character = "\u2518"
+        
+            assign_character(search_map,(x1,y1),character)
+
+        #short horizontal
+        if   (x1 - x0 ==  0) :      
+            character = "\u2574"  
+        #short vertical  
+        elif (y1 - y0 ==  0) :
+            character = "\u2575"
+    
+        assign_character(search_map,(x0,y0),character)
+
+    if True :
+        for line in search_map:
             print (line)
 
+    time.sleep(0.03)
+
     #returing resultant map
-    return maze_map
+    return search_map
 
 def write_to_file(file_name, path):
     """Function to write output to console and the optimal path
@@ -140,7 +180,12 @@ def get_cell_pos(maze_map,cell_val):
     Sequence[int]
         index or list of indices (position) of cells
     """
-    cell_pos = [[maze_map.index(row),row.index(cell)] for row in maze_map for cell in row if cell == cell_val]  
+    cell_pos = list()
+    for row,x in zip(maze_map,range(len(maze_map))) :
+        for cell,y in zip(row,range(len(row))):
+            if cell == cell_val:
+                cell_pos.append([x,y])
+    #cell_pos = [[maze_map.index(row),row.index(cell)] for row in maze_map for cell in row if cell == cell_val]  
     return cell_pos
 
 def assign_character(map,position,character):
@@ -224,6 +269,6 @@ def create_pathmap(maze_map, path):
     #Goal position
     x,y = path[-1]
     assign_character(path_map,(x,y),"X")
-
+    assign_character(maze_map,(x,y),"X")
     #returning resultant map
     return path_map
