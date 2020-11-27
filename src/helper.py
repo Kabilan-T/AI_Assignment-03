@@ -210,7 +210,7 @@ def create_pathmap(maze_map, path):
         
         #right to down or down to right 
         elif ((py - cy ==  1) and (cx - nx == -1)) or ((px - cx ==  1) and (cy - ny == -1)):
-            character = "\u252C"    #not exact unicode
+            character = "\u250C"
 
         #left to up or up to left
         elif ((px - cx == -1) and (cy - ny ==  1)) or ((py - cy == -1) and (cx - nx ==  1)):
