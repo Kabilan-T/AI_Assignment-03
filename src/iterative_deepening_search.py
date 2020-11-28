@@ -36,15 +36,13 @@ def iterative_deepening_depth_first_search(maze_map, start_pos, goal_pos):
     tree = maze_map_to_tree(maze_map)
 
     max_depth = len(tree)
-    visited_nodes  = list()
-    new_nodes = deque()
     
     for depth in range (max_depth):
         path_map = depth_Limited_search(maze_map, tree, start_pos, goal_pos, depth)
         if path_map != None:
             return path_map
  
-    print("no path")
+    #no path
     return None
 
 def depth_Limited_search(maze_map, tree, start_pos, goal_pos, max_depth):
@@ -197,13 +195,13 @@ if __name__ == '__main__':
    
     # CALL THESE FUNCTIONS after filling in the necessary implementations
     
-    for goal_pos_map1 in goals_pos_map1:
+    '''for goal_pos_map1 in goals_pos_map1:
         path_map1 = iterative_deepening_depth_first_search(maze_map_map1, start_pos_map1, goal_pos_map1)
         write_to_file("iddfs_map1", path_map1)
 
     for goal_pos_map2 in goals_pos_map2:
         path_map2 = iterative_deepening_depth_first_search(maze_map_map2, start_pos_map2, goal_pos_map2)
-        write_to_file("iddfs_map2", path_map2)
+        write_to_file("iddfs_map2", path_map2)'''
 
     for goal_pos_map3 in goals_pos_map3:
         path_map3 = iterative_deepening_depth_first_search(maze_map_map3, start_pos_map3, goal_pos_map3)
