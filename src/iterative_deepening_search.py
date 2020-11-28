@@ -4,6 +4,10 @@
 Created on Fri Apr 27 21:15:04 2018
 
 @author: Iswariya Manivannan
+
+Edited on Sat Nov 28 12:00:00 2020
+
+@author: Kabilan Tamilmani
 """
 import sys
 import os
@@ -13,9 +17,6 @@ from helper import maze_map_to_tree, write_to_file, assign_character_for_nodes, 
 
 def iterative_deepening_depth_first_search(maze_map, start_pos, goal_pos):
     """Function to implement the IDDFS algorithm.
-    Please use the functions in helper.py to complete the algorithm.
-    Please do not clutter the code this file by adding extra functions.
-    Additional functions if required should be added in helper.py
 
     Parameters
     ----------
@@ -192,16 +193,14 @@ if __name__ == '__main__':
     goals_pos_map1 = get_cell_pos(maze_map_map1,'*')
     goals_pos_map2 = get_cell_pos(maze_map_map2,'*')
     goals_pos_map3 = get_cell_pos(maze_map_map3,'*')
-   
-    # CALL THESE FUNCTIONS after filling in the necessary implementations
     
-    '''for goal_pos_map1 in goals_pos_map1:
+    for goal_pos_map1 in goals_pos_map1:
         path_map1 = iterative_deepening_depth_first_search(maze_map_map1, start_pos_map1, goal_pos_map1)
         write_to_file("iddfs_map1", path_map1)
 
     for goal_pos_map2 in goals_pos_map2:
         path_map2 = iterative_deepening_depth_first_search(maze_map_map2, start_pos_map2, goal_pos_map2)
-        write_to_file("iddfs_map2", path_map2)'''
+        write_to_file("iddfs_map2", path_map2)
 
     for goal_pos_map3 in goals_pos_map3:
         path_map3 = iterative_deepening_depth_first_search(maze_map_map3, start_pos_map3, goal_pos_map3)

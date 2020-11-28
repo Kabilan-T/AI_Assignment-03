@@ -1,9 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Thu May  3 01:36:01 2018
+Created on Fri Apr 27 21:15:04 2018
 
 @author: Iswariya Manivannan
+
+Edited on Sat Nov 28 12:00:00 2020
+
+@author: Kabilan Tamilmani
 """
 
 import sys
@@ -12,9 +16,7 @@ import time
 
 
 def maze_map_to_tree(maze_map):
-    """Function to create a tree from the map file. The idea is
-    to check for the possible movements from each position on the
-    map and encode it in a data structure like list.
+    """Function to create a tree from the map file.
 
     Parameters
     ----------
@@ -51,8 +53,7 @@ def maze_map_to_tree(maze_map):
     return tree
 
 def assign_character_for_nodes(search_map, current_node, queue):
-    """Function to assign character for the visited nodes. Please assign
-    meaningful characters based on the direction of tree traversal.
+    """Function to assign character for the visited nodes.
 
     Parameters
     ----------
@@ -133,10 +134,6 @@ def assign_character_for_nodes(search_map, current_node, queue):
 def write_to_file(file_name, path):
     """Function to write output to console and the optimal path
     from start to each goal to txt file.
-    Please ensure that it should ALSO be possible to visualize each and every
-    step of the tree traversal algorithm in the map in the console.
-    This enables understanding towards the working of your
-    tree traversal algorithm as to how it reaches the goals.
 
     Parameters
     ----------
@@ -185,7 +182,6 @@ def get_cell_pos(maze_map,cell_val):
         for cell,y in zip(row,range(len(row))):
             if cell == cell_val:
                 cell_pos.append([x,y])
-    #cell_pos = [[maze_map.index(row),row.index(cell)] for row in maze_map for cell in row if cell == cell_val]  
     return cell_pos
 
 def assign_character(map,position,character):

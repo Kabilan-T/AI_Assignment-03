@@ -4,6 +4,10 @@
 Created on Fri Apr 27 21:15:04 2018
 
 @author: Iswariya Manivannan
+
+Edited on Sat Nov 28 12:00:00 2020
+
+@author: Kabilan Tamilmani
 """
 import sys
 import os
@@ -13,9 +17,6 @@ from helper import maze_map_to_tree, write_to_file, assign_character_for_nodes, 
 
 def depth_first_search(maze_map, start_pos, goal_pos):
     """Function to implement the DFS algorithm.
-    Please use the functions in helper.py to complete the algorithm.
-    Please do not clutter the code this file by adding extra functions.
-    Additional functions if required should be added in helper.py
 
     Parameters
     ----------
@@ -34,8 +35,6 @@ def depth_first_search(maze_map, start_pos, goal_pos):
     start = start_pos[0]
     goal = goal_pos
     queue = deque([("", start)])
-
-    # Fill in your DFS algorithm here
 
     #tree with possible movements
     tree = maze_map_to_tree(maze_map)
@@ -134,8 +133,6 @@ if __name__ == '__main__':
     goals_pos_map2 = get_cell_pos(maze_map_map2,'*')
     goals_pos_map3 = get_cell_pos(maze_map_map3,'*')
    
-    # CALL THESE FUNCTIONS after filling in the necessary implementations
-    
     for goal_pos_map1 in goals_pos_map1:
         path_map1 = depth_first_search(maze_map_map1, start_pos_map1, goal_pos_map1)
         write_to_file("dfs_map1", path_map1)
